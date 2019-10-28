@@ -12,6 +12,13 @@
         name,
         account
     </sql>
-
+    <select id="find" resultMap="userMap">
+        SELECT
+        <include refid="table_column"/>
+        FROM user
+        <where>
+            id = #{id}
+        </where>
+    </select>
 
 </mapper>
