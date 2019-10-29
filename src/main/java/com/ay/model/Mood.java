@@ -11,7 +11,7 @@ public class Mood {
 
     private String content;
 
-    private String praiseNum;
+    private Integer praiseNum;
 
     private String userId;
 

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMoodPraiseRelDao {
 
-    boolean save(@Param("userMoodPraseRel")UserMoodPraiseRel userMoodPraiseRel);
+    boolean save(@Param("userMoodPraiseRel")UserMoodPraiseRel userMoodPraiseRel);
 }

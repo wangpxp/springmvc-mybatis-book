@@ -24,4 +24,26 @@
         <include refid="table_column"></include>
         FROM mood
     </select>
+
+    <select id="findById" resultMap="moodMap">
+        select
+        <include refid="table_column"/>
+        FROM mood
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <update id="update">
+        update mood
+        <set>
+            <if test="mood.content != null and mood.content != ''">
+                content = #{mood.content},
+            </if>
+            <if test="mood.praiseNum != null and mood.praiseNum != ''">
+                praise_num = #{mood.praiseNum},
+            </if>
+        </set>
+        where id = #{mood.id}
+    </update>
 </mapper>
