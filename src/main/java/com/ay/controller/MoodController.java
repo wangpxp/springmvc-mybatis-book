@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/mood")
@@ -34,4 +35,16 @@ public class MoodController {
         model.addAttribute("isPraise", isPraise);
         return "mood";
     }
+
+    @GetMapping("/{moodId}/praiseForRedis")
+    public String praiseForRedis(Model model, @PathVariable("moodId") String moodId, @RequestParam("userId") String userId) {
+        Random random = new Random();
+        userId = random.nextInt(100) + "";
+        boolean isPraise = moodService.praiseMoodForRedis(userId, moodId);
+        List<MoodDTO> moodDTOList = moodService.findAllForRedis();
+        model.addAttribute("moods", moodDTOList);
+        model.addAttribute("isPraise", isPraise);
+        return "mood";
+    }
 }
+
